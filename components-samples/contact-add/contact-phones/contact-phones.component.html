@@ -1,0 +1,39 @@
+<form [formGroup]="contactsForm" [connect]="['contact', 'contactForms', 'contactsForm']">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <mat-form-field class="full-width">
+          <input type="text" matInput placeholder="Email" formControlName="email">
+          <mat-error *ngIf="contactsForm.get('email').hasError('required') && contactsForm.get('email').touched">
+            Email is required
+          </mat-error>
+          <mat-error *ngIf="contactsForm.get('email').hasError('pattern') && contactsForm.get('email').touched">
+            Email is not valid
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <mat-form-field class="full-width">
+          <input type="text" matInput placeholder="Phone" formControlName="mobile">
+          <mat-error *ngIf="contactsForm.get('mobile').hasError('required') && contactsForm.get('mobile').touched">
+            This field is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group">
+        <mat-form-field class="full-width">
+          <input type="text" matInput placeholder="Website" formControlName="website">
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+</form>
+
+<div class="stepper-actions" fxLayoutAlign="space-between center">
+  <button mat-raised-button color="default" matStepperPrevious>Previous</button>
+  <button mat-raised-button color="primary" [disabled]="!contactsForm.valid" matStepperNext>Next</button>
+</div>

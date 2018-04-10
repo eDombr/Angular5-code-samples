@@ -1,0 +1,21 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <button id="back" class="btn btn-round btn-white btn-fill btn-just-icon" routerLink="../">
+      <i class="material-icons">keyboard_arrow_left</i>
+    </button>
+    <mat-horizontal-stepper>
+      <mat-step label="Contact Information">
+        <app-contact-info></app-contact-info>
+      </mat-step>
+      <mat-step label="Address">
+        <app-contact-address></app-contact-address>
+      </mat-step>
+      <mat-step label="Contacts">
+        <app-contact-phones></app-contact-phones>
+      </mat-step>
+      <mat-step label="Notes">
+        <app-contact-notes></app-contact-notes>
+      </mat-step>
+    </mat-horizontal-stepper>
+  </div>
+</div>

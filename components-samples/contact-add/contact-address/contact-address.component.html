@@ -1,0 +1,42 @@
+<form class="address-info" [formGroup]="contactAddressForm" [connect]="['contact', 'contactForms', 'addressForm']">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <mat-form-field class="full-width">
+          <input type="text" matInput placeholder="Street" formControlName="street">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <mat-form-field class="full-width">
+          <input type="text" matInput placeholder="Street number" formControlName="streetnr">
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <mat-form-field class="full-width">
+          <input type="text" matInput placeholder="Post code" formControlName="postcode">
+          <mat-error *ngIf="contactAddressForm.get('postcode').hasError('pattern') && contactAddressForm.get('postcode').touched">
+            Only numbers
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <mat-form-field class="full-width">
+          <input type="text" matInput placeholder="City" formControlName="city">
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+</form>
+
+<div class="stepper-actions" fxLayoutAlign="space-between center">
+  <button mat-raised-button color="default" matStepperPrevious>Previous</button>
+  <button mat-raised-button color="primary" [disabled]="!contactAddressForm.valid" matStepperNext>Next</button>
+</div>

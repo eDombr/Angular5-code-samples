@@ -1,0 +1,79 @@
+<form [formGroup]="contactInfoForm" [connect]="['contact', 'contactForms', 'infoForm']">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <mat-form-field class="full-width">
+          <mat-select placeholder="Salutation*" formControlName="salutation">
+            <mat-option [value]="'Mr'">Mr</mat-option>
+            <mat-option [value]="'Mrs'">Mrs</mat-option>
+          </mat-select>
+          <mat-error *ngIf="contactInfoForm.get('salutation').hasError('required') && contactInfoForm.get('salutation').touched">
+            This field is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <mat-form-field class="full-width">
+          <input type="text" matInput placeholder="First Name*" formControlName="prename">
+          <mat-error *ngIf="contactInfoForm.get('prename').hasError('required') && contactInfoForm.get('prename').touched">
+            This field is required
+          </mat-error>
+          <mat-error *ngIf="contactInfoForm.get('prename').hasError('pattern') && contactInfoForm.get('prename').touched">
+            Minimum 2 char, maximum 40
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <mat-form-field class="full-width">
+          <input type="text" matInput placeholder="Last Name*" formControlName="lastname">
+          <mat-error *ngIf="contactInfoForm.get('lastname').hasError('required') && contactInfoForm.get('lastname').touched">
+            This field is required
+          </mat-error>
+          <mat-error *ngIf="contactInfoForm.get('lastname').hasError('pattern') && contactInfoForm.get('lastname').touched">
+            Minimum 2 char, maximum 40
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <mat-form-field class="full-width">
+          <input type="text" matInput placeholder="Company" formControlName="company">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <mat-form-field class="full-width">
+          <mat-select placeholder="Contact role" formControlName="role">
+            <mat-option value="electrician">Electrician</mat-option>
+            <mat-option value="sufdicciant">Sufdicciant </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <mat-form-field class="full-width">
+          <input type="text" matInput placeholder="IBAN" formControlName="iban">
+          <mat-error *ngIf="contactInfoForm.get('iban').hasError('required') && contactInfoForm.get('iban').touched">
+            This field is required
+          </mat-error>
+          <mat-error *ngIf="contactInfoForm.get('iban').hasError('pattern') && contactInfoForm.get('iban').touched">
+            Incorrect IBAN
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+</form>
+
+<div class="stepper-actions" fxLayoutAlign="end end">
+  <button mat-raised-button color="primary" [disabled]="!contactInfoForm.valid" matStepperNext>Next</button>
+</div>
